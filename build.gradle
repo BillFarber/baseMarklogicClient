@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.billFarber'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = "1.8"
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "http://developer.marklogic.com/maven2/" }
+}
+
+dependencies {
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile group: "org.slf4j", name: "slf4j-jdk14", version: "1.7.25"
+    compile group: 'com.marklogic', name: 'marklogic-client-api', version: '4.2.0'
+    compile ("com.marklogic:ml-javaclient-util:3.10.0") {
+        exclude module: "jdom2"
+        exclude module: "marklogic-xcc"
+        exclude module: "spring-context"
+    }
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+ext {
+    taskGroup = project.name
+}
